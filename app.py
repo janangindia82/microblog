@@ -36,7 +36,7 @@ def create_app():
     if request.method == "POST":
         entry_content = request.form.get("content")
         format_date= datetime.datetime.today().strftime("%y-%m-%d")
-        app.db.entries.insert_many({"content": entry_content, "date": format_date})
+        app.db.entries.insert_many([{"content": entry_content, "date": format_date}])
         return redirect(url_for("home"))
     entries_with_date= [
         (entry["content"], 
